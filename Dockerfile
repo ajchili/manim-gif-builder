@@ -1,11 +1,12 @@
-FROM python:3.10
+FROM python:3.10-alpine
 
 WORKDIR /app
 
+RUN apk update
+RUN apk add alpine-sdk ffmpeg pango-dev
+
 COPY . .
 
-RUN apt-get update -y
-RUN apt-get install -y ffmpeg libcogl-pango-dev
 RUN python -m pip install --upgrade pip
 RUN pip install -r requirements.txt
 
