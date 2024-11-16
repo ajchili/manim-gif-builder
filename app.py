@@ -17,6 +17,9 @@ def index():
 
 	font_size = int(request.args.get('fontSize', "24"))
 	background_image = request.args.get('backgroundImage', None)
+	# Account for issue with DNS masking redirects replacing "//" with "/" in image urls (e.g. "https://" -> "https:/")
+	if background_image != None and ":/" in background_image and "://" not in background_image:
+		background_image = background_image.replace(":/", "://")
 
 	image_hash = urllib.parse.quote_plus(f"{text}_{str(font_size)}_{str(background_image)}")
 	output_path = f"{media_dir}/{image_hash}.gif"
