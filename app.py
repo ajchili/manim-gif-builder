@@ -33,7 +33,7 @@ def index():
 				f.write(r.content)
 			scene.add(ImageMobject(filename_or_array=f"{media_dir}/image.png"))
 		
-		scene.play(Write(Text(text=text, font_size=font_size, font="Times New Roman")))
+		scene.play(Write(Text(text=text, font_size=font_size)))
 		scene.wait()
 		scene.render(preview=False)
 

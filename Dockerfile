@@ -3,7 +3,7 @@ FROM python:3.10-alpine
 WORKDIR /app
 
 RUN apk update
-RUN apk add alpine-sdk ffmpeg pango-dev font-linux-libertine
+RUN apk add alpine-sdk ffmpeg pango-dev
 
 COPY . .
 
