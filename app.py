@@ -12,6 +12,9 @@ media_dir = "media"
 @app.route("/")
 def index():
 	text = request.args.get('text', "boneless")
+	if text.endswith(".gif"):
+		text = text[0:-4] or "boneless"
+
 	font_size = int(request.args.get('fontSize', "24"))
 	background_image = request.args.get('backgroundImage', None)
 
